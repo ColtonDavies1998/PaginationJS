@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaginationJS demo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <h1>PaginationJS Demo</h1>
+
+    <div id="searchBar"></div>
+          
+    <!--Number of items per page-->
+    
+    <div id="numOfItemsDisplay"></div>
+    
+    <!--Table-->
+    <table id="table" class="table"></table>
+    
+    <hr>
+    
+    <ul class="pagination" id="pagination"></ul>
+</body>
+<script src="../paginationJS.js"></script>
+<script src="js/dataObject.js"></script>
+<script>
+
+    var tableHeads = ["Id", "Name", "Start Time", "Start Date", "Task Type" , "Priority", "Completed", "Edit", "Remove"];
+    var objectFields = ["Task_Id", "Task_Name","Task_StartTime","Task_Date", "Task_Type", "Task_priority" ,"Task_completed"];
+    var sourceId = document.getElementById("table");
+
+    var table = new Table(data, {
+              tableHeaders: tableHeads,
+              tableId: sourceId,
+              fields: objectFields,
+              numOfItemsDropdownDisplay: {
+                display: true,
+                numberList: ["5", "10", "15", "25"]
+              },
+              searchBarDisplay: true,
+              specialButtons: [
+                {
+                  btnName: "edit",
+                  btnClasses: ["btn", "btn-warning"],
+                  text: "Edit"
+                },
+                {
+                  btnName: "delete",
+                  btnClasses: ["btn", "btn-danger", "deleteButtons"],
+                  text: "Delete"
+                }
+              ]
+            });
+
+            table.createTable();
+
+</script>
+</html>
